@@ -18,10 +18,13 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
+app.get("/api", (req, res) => {
+  res.send("Hello, world api!");
+});
 
-app.use("user", require("./src/user/controller/UserController"))
+app.use("/api/books", require("./src/books/controller/BooksController"))
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
